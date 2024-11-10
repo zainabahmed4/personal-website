@@ -239,6 +239,25 @@ body {
     box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.5); /* Glow effect */
 }
 
+.scroll-down {
+    width: 70px;
+    height: 70px;
+    position: absolute; 
+    bottom: 20px; /* Distance from the bottom of the screen */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.scroll-down .arrows {
+    width: 100%;
+    height: auto;
+    opacity: 0.3; /* Slight transparency for a subtle effect */
+}
+
 /* About Me section */
 
 .about-me-section {
@@ -336,7 +355,7 @@ body {
     margin-top: 0px;
     margin-bottom: 30px;
     font-family: "Poppins", serif;
-    font-weight: 200;
+    font-weight: 400;
     font-style: normal;
     color: #5e548e;
     font-size: 15px;
