@@ -174,7 +174,7 @@ body {
     position: relative;
     width: 503px;
     height: 132px;
-    margin-top: 150px;
+    margin-top: 120px;
     margin-left: 120px;
 }
 
@@ -203,11 +203,11 @@ body {
     letter-spacing: 0;
     line-height: normal;
     overflow: hidden; /* Ensures text is hidden during animation */
-    border-right: 2px solid white; /* Simulates the typing cursor */
-    white-space: nowrap; /* Prevents text from wrapping to a new line */
-    width: 0; /* Start with zero width for the typing effect */
+    border-right: 2px solid white; 
+    white-space: nowrap; 
+    width: 0; 
     animation: typing 3s steps(12, end) forwards, /* Typing animation */
-               blink-cursor 0.75s step-end infinite; /* Blinking cursor animation */
+               blink-cursor 0.75s step-end infinite;
 }
 
 /* Typing animation */
@@ -238,6 +238,24 @@ body {
     border-radius: 50px;
     box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.5); /* Glow effect */
 }
+
+.subtitle {
+    position: relative;
+    width: 100%;
+    top: 50px; 
+    left: 0;
+    margin-left: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    color: #9f86c0;
+    font-size: 17px;
+    letter-spacing: 1px; 
+    line-height: normal;
+    text-align: left;
+    text-transform: uppercase; 
+    opacity: 0.6; 
+}
+
 
 /* Scroll Down Icon */
 
