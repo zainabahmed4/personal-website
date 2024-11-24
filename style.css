@@ -246,16 +246,14 @@ body {
     left: 0;
     margin-left: 0px;
     font-family: "Poppins", sans-serif;
-    font-weight: 300;
+    font-weight: 200;
     color: #9f86c0;
     font-size: 17px;
     letter-spacing: 1px; 
     line-height: normal;
     text-align: left;
     text-transform: uppercase; 
-    opacity: 0.6; 
 }
-
 
 /* Scroll Down Icon */
 
