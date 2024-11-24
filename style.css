@@ -51,6 +51,7 @@ body {
     font-size: 20px;
     letter-spacing: 0;
     line-height: normal;
+    text-decoration: none;
 }
 
 .header .portfolio:hover {
@@ -80,6 +81,8 @@ body {
     font-size: 20px;
     letter-spacing: 0;
     line-height: normal;
+    text-decoration: none;
+
 }
 
 .header .about:hover {
@@ -109,6 +112,8 @@ body {
     font-size: 20px;
     letter-spacing: 0;
     line-height: normal;
+    text-decoration: none;
+
 }
 
 .header .resume:hover {
