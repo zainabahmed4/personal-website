@@ -1,7 +1,7 @@
 /* Background */
 
 body {
-    background-color: #231942;
+    background: linear-gradient(#1a1232, #3c2460);
     min-height: 100vh;
     margin: 0;
     width: 100%;
