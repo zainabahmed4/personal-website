@@ -160,7 +160,7 @@ body {
 .welcome-message {
     height: 100vh; /* Full viewport height */
     background:
-        linear-gradient(to bottom, rgba(35, 25, 66, 0) 70%, #231942), /* Dark purple fade-out gradient */
+        linear-gradient(to bottom, rgba(35, 25, 66, 0) 70%, #231942),
         url('Clouds.jpg') no-repeat center center; /* Cloud image */
     background-size: cover; /* Fill screen */
     display: flex;
@@ -179,7 +179,7 @@ body {
     position: relative;
     width: 503px;
     height: 132px;
-    margin-top: 120px;
+    margin-top: 90px;
     margin-left: 120px;
 }
 
