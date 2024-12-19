@@ -155,3 +155,24 @@ body {
     top: 3px;
     left: 0;
 }
+
+
+/*  Resume */
+
+.resume {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.pdf {
+    width: 800px;
+    height: 500px;
+    aspect-ratio: 4/3;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-top: 130px;
+}
