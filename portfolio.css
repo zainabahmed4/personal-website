@@ -590,6 +590,7 @@ body {
     position: absolute;
     opacity: 60%;
     transition: transform 0.2s ease; 
+    
 }
 
 .github-link:hover {
