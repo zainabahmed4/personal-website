@@ -590,9 +590,8 @@ body {
     position: absolute;
     opacity: 60%;
     transition: transform 0.2s ease; 
-    
 }
 
 .github-link:hover {
-    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+    transform: scale(1.1);
 }
