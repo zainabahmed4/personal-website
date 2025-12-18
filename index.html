@@ -2,89 +2,235 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zainab Ahmed - Personal Website</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="img/apple-touch-icon.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zainab Ahmed - Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ballet:wght@400&family=Kaisei+Decol:wght@400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="img/apple-touch-icon.png" />
 </head>
 
-<!-- Main header section with the navigation menu -->
 <body>
-    <header>
-        <div class="header">
-            <div class="menu">
-              <div class="item1">
-                <a href="portfolio.html" class="portfolio">portfolio</a>
-                <img class="sparkling-fill" src="img/sparkling-star.svg" />
+  <!-- Top navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-icon">✦</span>
+        <span class="brand-name">Zainab Ahmed</span>
+      </div>
+      <nav class="nav">
+        <a href="#about">about</a>
+        <a href="#projects">projects</a>
+        <a href="#experience">experience</a>
+        <a href="#contact">contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <!-- Large background decorative Z and A -->
+      <span class="hero-bg-decorative-z">Z</span>
+      <span class="hero-bg-decorative-a">A</span>
+      
+      <div class="hero-inner container">
+        <p class="hero-greeting">Hi there! I'm</p>
+        <h1 class="hero-name-wrapper">
+          <span class="hero-decorative-z">Z</span>
+          <span class="hero-name-first">ainab</span>
+          <span class="hero-decorative-a">A</span>
+          <span class="hero-name-last">hmed</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section about">
+      <img src="img/teapot doodle.png" alt="Teapot doodle" class="about-teapot" />
+      <img src="img/pink heart doodle.png" alt="Pink heart doodle" class="about-heart" />
+      <img src="img/camera doodle.png" alt="Camera doodle" class="about-camera" />
+      <div class="container about-inner">
+        <div class="about-text">
+          <h2 class="section-title">About Me</h2>
+          <p>
+            Hello! I’m Zainab, currently an undergraduate studying Computer Science + Design in Chicago. I’m passionate about UX/UI Design, web development, and creating efficient solutions through technology. With skills in front-end and design tools, I enjoy building user-friendly, visually appealing websites and applications.
+          </p>
+          <p>
+            I’m always excited to learn new technologies and look forward to opportunities to apply my technical skills and creativity in real-world projects. When I'm not designing or coding, I like to paint and read!
+          </p>
+        </div>
+        <div class="about-illustration">
+          <img src="img/me doodle.png" alt="Zainab Ahmed illustration" class="about-image" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section projects">
+      <div class="container">
+        <h2 class="section-title center">Projects</h2>
+
+        <div class="project-filters" aria-hidden="true">
+          <button class="pill pill-active" type="button">All Projects</button>
+          <button class="pill" type="button">UX Research &amp; Design</button>
+          <button class="pill" type="button">Development</button>
+        </div>
+
+        <div class="project-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <a href="project-student-onboarding.html" class="project-link">
+              <div class="project-image">
+                <div class="project-image-placeholder">
+                  <span>Project image</span>
+                </div>
               </div>
-              <div class="item2">
-                <a href="index.html" class="about">about</a>
-                <img class="sparkling-fill" src="img/sparkling-star.svg" />
+              <div class="project-content">
+                <p class="project-tagline">UX Research / Wireframing / Figma / HTML / CSS</p>
+                <h3 class="project-title">Student Onboarding Site</h3>
+                <p class="project-summary">
+                  Designed and built a clear, accessible onboarding experience for new student hires.
+                </p>
+                <button class="project-button" type="button">View Project</button>
               </div>
-              <div class="item3">
-                <a href="resume.html" class="resume">resume</a>
-                <img class="sparkling-fill" src="img/sparkling-star.svg" />
+            </a>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <a href="project-hobby-blog.html" class="project-link">
+              <div class="project-image">
+                <div class="project-image-placeholder">
+                  <span>Project image</span>
+                </div>
               </div>
-            </div>
+              <div class="project-content">
+                <p class="project-tagline">JavaScript / HTML / CSS / Express.js / Node.js</p>
+                <h3 class="project-title">Hobby Blog Website</h3>
+                <p class="project-summary">
+                  A personal blogging platform where users can share posts about travel, food, and everyday stories.
+                </p>
+                <button class="project-button" type="button">View Project</button>
+              </div>
+            </a>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <a href="project-pocket-gallery.html" class="project-link">
+              <div class="project-image">
+                <div class="project-image-placeholder">
+                  <span>Project image</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <p class="project-tagline">UI/UX Design / Figma / Prototyping</p>
+                <h3 class="project-title">Pocket Gallery App</h3>
+                <p class="project-summary">
+                  A mobile app that lets users curate and share art collections in a playful, interactive way.
+                </p>
+                <button class="project-button" type="button">View Project</button>
+              </div>
+            </a>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card">
+            <a href="project-wics-website.html" class="project-link">
+              <div class="project-image">
+                <div class="project-image-placeholder">
+                  <span>Project image</span>
+                </div>
+              </div>
+              <div class="project-content">
+                <p class="project-tagline">Figma / Web Design / Wireframing</p>
+                <h3 class="project-title">Women in CS Website Design</h3>
+                <p class="project-summary">
+                  A website design supporting a Women in CS organization with a warm, welcoming brand.
+                </p>
+                <button class="project-button" type="button">View Project</button>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section experience">
+      <div class="container">
+        <h2 class="section-title center">Experience</h2>
+
+        <div class="experience-panel">
+          <div class="experience-grid">
+            <article class="experience-card">
+              <h3 class="experience-label">UX Research Aide</h3>
+              <p class="experience-place">Argonne National Laboratory</p>
+              <p class="experience-time">Jun 2025 – Present</p>
+              <p class="experience-copy">
+                Supporting user research and prototyping for onboarding tools, focusing on accessibility and clear
+                information design.
+              </p>
+            </article>
+
+            <article class="experience-card">
+              <h3 class="experience-label">AI/ML Fellow</h3>
+              <p class="experience-place">Salesforce</p>
+              <p class="experience-time">Aug 2025 – Present</p>
+              <p class="experience-copy">
+                Collaborating with a team to explore machine learning solutions and data-driven storytelling.
+              </p>
+            </article>
+
+            <article class="experience-card">
+              <h3 class="experience-label">Executive Board</h3>
+              <p class="experience-place">Women in CS @ UIC</p>
+              <p class="experience-time">Jan 2025 – Present</p>
+              <p class="experience-copy">
+                Leading design work for community events, mentorship programs, and outreach materials.
+              </p>
+            </article>
+
+            <article class="experience-card">
+              <h3 class="experience-label">Assistant Instructor</h3>
+              <p class="experience-place">Kumon Math and Reading Center</p>
+              <p class="experience-time">Jun 2022 – Jun 2023</p>
+              <p class="experience-copy">
+                Guided students through personalized math and reading practice with patience and encouragement.
+              </p>
+            </article>
           </div>
-    </header>
- 
-    <!--Scroll Down bar-->
-    <div class="scroll-down">
-        <img class="arrows" src="img/arrow-down-double-fill.svg" />
-    </div>
-
-
-    <!-- Hero section with a welcome message -->
-    <div class="welcome-message">
-        <div class="welcome-group">
-            <div class="overlap-group">
-                <p class="hi-there">hi there! my name is</p>
-                <div class="name">zainab ahmed</div>
-                <div class="subtitle">CS + Design Student | Frontend & UX Design</div>
-            </div>
         </div>
-    </div>
-    <!--Glowing moon-->
-    <div class="moon">
-        <div class="circle"></div>
-    </div>
-</body>
+      </div>
+    </section>
+  </main>
 
-
-<!-- About Me section -->
-<body>
-    <div class="about-me-section">
-        <h2 class="about-title">about me</h2>
-        <div class="about-image">
-            <img src="img/Pfp.png" alt="My pic" class="profile-pic"/>
-        </div>
-        <p class="about-description">
-            Hello! I’m Zainab, currently an undergraduate studying Computer Science + Design in Chicago. I’m passionate about web development, UX/UI Design, and creating efficient solutions through technology. With skills in HTML, CSS, Python, C/C++, etc., I enjoy building user-friendly, visually appealing websites and applications. I’m always excited to learn new technologies and look forward to opportunities to apply my technical skills and creativity in real-world projects. When I'm not designing or coding, I like to paint and read!
-        </p>
+  <!-- Footer / contact -->
+  <footer id="contact" class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-icons">
+        <a href="mailto:zainabahmed1204@gmail.com" aria-label="Email">
+          <span class="footer-icon-circle">✉</span>
+        </a>
+        <a href="https://github.com/zainabahmed4" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <span class="footer-icon-circle">GH</span>
+        </a>
+        <a href="https://www.linkedin.com/in/zainab-ahmed1204" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <span class="footer-icon-circle">in</span>
+        </a>
+      </div>
+      <p class="footer-email">zainabahmed1204@gmail.com</p>
+      <p class="footer-credit">Designed &amp; built by Zainab Ahmed</p>
     </div>
-
-    <!-- Contact section -->
-    <div class="contact-section">
-        <div class="social-icons">
-            <a href="https://github.com/zainabahmed4" target="_blank">
-                <img class="github" src="img/github-icon.svg" alt="GitHub"/>
-            </a>
-            <a href="https://www.linkedin.com/in/zainab-ahmed1204" target="_blank">
-                <img class="linkedin" src="img/linkedin-icon.svg" alt="LinkedIn"/>
-            </a>
-        </div>
-        <p class="email">zainabahmed1204@gmail.com</p>
-    </div>
-    <div class="credits">
-        <p class="built-by">built & designed by zainab ahmed</p>
-    </div>
-
-
+  </footer>
 </body>
 
 </html>

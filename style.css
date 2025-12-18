@@ -1,386 +1,714 @@
-/* Background */
+/* ===== Base ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
-    background-color: #231942;
-    min-height: 100vh;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  /* Avenir is not a web font, so we fall back to a similar system stack */
+  font-family: "Avenir", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #46363e;
+  background-color: #f7f1f2;
 }
 
-/*  Menu Bar */
-
-.header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    padding: 20px 600px;
-    display: flex;
-    justify-content: flex-end;
-    width: auto;
-    z-index: 100;
-
+img {
+  max-width: 100%;
+  display: block;
 }
 
-.menu {
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: 20px;
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  overflow: visible;
 }
 
-.header .item1 {
-    display: flex;
-    width: 120px;
-    top: 0;
-    left: 800px;
-    position: absolute;
-    height: 30px;
-    align-items: center;
+.section {
+  padding: 4.5rem 0;
 }
 
-.header .portfolio {
-    position: absolute;
-    top: 0;
-    left: 35px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    color: #ffff;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: normal;
-    text-decoration: none;
+.section-title {
+  font-family: "Source Serif 4", "Times New Roman", serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -1.3px;
+  font-size: 70px;
+  margin: 0 0 1.75rem;
+  color: #5A5F58;
+  line-height: 0.99;
 }
 
-.header .portfolio:hover {
-    color: #9f86c0; /* Light purple on hover */
-    text-shadow: 0 0 8px rgba(159, 134, 192, 0.8), 
-                 0 0 16px rgba(159, 134, 192, 0.6),
-                 0 0 24px rgba(159, 134, 192, 0.4); /* Layered glowing effect */
+.section-title.center {
+  text-align: center;
 }
 
-.header .item2 {
-    display: flex;
-    align-items: center;
-    width: 120px;
-    top: 0;
-    left: 600px;
-    position: absolute;
-    height: 30px;
+/* ===== Header / Nav ===== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: #E3E7E2;
+  border-bottom: 1px solid rgba(180, 191, 183, 0.4);
 }
 
-.header .about {
-    position: absolute;
-    top: 0;
-    left: 35px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    color: #ffff;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: normal;
-    text-decoration: none;
-
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
 }
 
-.header .about:hover {
-    color: #9f86c0; /* Light purple on hover */
-    text-shadow: 0 0 8px rgba(159, 134, 192, 0.8), 
-                 0 0 16px rgba(159, 134, 192, 0.6),
-                 0 0 24px rgba(159, 134, 192, 0.4); /* Layered glowing effect */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5f7268;
 }
 
-.header .item3 {
-    display: flex;
-    align-items: center;
-    width: 120px;
-    top: 0;
-    left: 1000px;
-    position: absolute;
-    height: 30px;
+.brand-icon {
+  font-size: 1.1rem;
 }
 
-.header .resume {
-    position: absolute;
-    top: 0;
-    left: 35px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    color: #ffff;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: normal;
-    text-decoration: none;
-
+.nav {
+  display: inline-flex;
+  gap: 1.75rem;
+  font-size: 1.2rem;
+  margin-right: -15rem;
 }
 
-.header .resume:hover {
-    color: #9f86c0; /* Light purple on hover */
-    text-shadow: 0 0 8px rgba(159, 134, 192, 0.8), 
-                 0 0 16px rgba(159, 134, 192, 0.6),
-                 0 0 24px rgba(159, 134, 192, 0.4); /* Layered glowing effect */
+.nav a {
+  text-decoration: none;
+  color: #6b756f;
+  text-transform: lowercase;
+  position: relative;
 }
 
-.header .sparkling-fill {
-    width: 24px;
-    height: 24px;
-    top: 3px;
-    left: 0;
-    position: relative;
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.3rem;
+  height: 1px;
+  background-color: #7b9a84;
+  opacity: 0;
+  transform: scaleX(0.6);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.header .div {
-    width: 97px;
-    top: 1px;
-    left: 0;
-    position: absolute;
-    height: 30px;
+.nav a:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
-.header .group-2 {
-    width: 113px;
-    top: 0;
-    left: 464px;
-    position: absolute;
-    height: 30px;
+/* ===== Hero ===== */
+
+.hero {
+  width: 100%;
+  height: 830px;
+  background-color: #F7F4F1;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.header .img {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    top: 3px;
-    left: 0;
+.hero .container {
+  max-width: none;
+  padding: 0 2rem;
 }
 
-/* Welcome Message */
-
-.welcome-message {
-    height: 100vh; /* Full viewport height */
-    background:
-        linear-gradient(to bottom, rgba(35, 25, 66, 0) 70%, #231942),
-        url('Clouds.jpg') no-repeat center center; /* Cloud image */
-    background-size: cover; /* Fill screen */
-    display: flex;
-
+.hero-inner {
+  text-align: center;
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  margin-top: -60px;
 }
 
-.welcome-message .welcome-group {
-    position: relative;
-    width: 507px;
-    height: 132px;
-    top: 0;
-    left: 0;
+.hero-greeting {
+  width: 602px;
+  height: 100px;
+  margin: 0 auto 0.100rem;
+  color: #5A5F58;
+  text-align: center;
+  font-family: "Kaisei Decol", serif;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.96px;
 }
 
-.welcome-message .overlap-group {
-    position: relative;
-    width: 503px;
-    height: 132px;
-    margin-top: 90px;
-    margin-left: 120px;
+.hero-name-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: -1.5rem 0 0;
+  overflow: visible;
 }
 
-.welcome-message .hi-there {
-    position: relative;
-    width: 430px;
-    top: 0;
-    left: 0;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    color: #9f86c0;
-    font-size: 32px;
-    letter-spacing: 0;
-    line-height: normal;
+.hero-name-first,
+.hero-name-last {
+  color: #5A5F58;
+  font-family: "Source Serif 4", "Times New Roman", serif;
+  font-size: 128px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: -6.4px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
 }
 
-.welcome-message .name {
-    position: absolute;
-    width: 503px;
-    top: 37px;
-    left: 0;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    color: #ffff;
-    font-size: 64px;
-    letter-spacing: 0;
-    line-height: normal;
-    overflow: hidden; /* Ensures text is hidden during animation */
-    border-right: 2px solid white; 
-    white-space: nowrap; 
-    width: 0; 
-    animation: typing 3s steps(12, end) forwards, /* Typing animation */
-               blink-cursor 0.75s step-end infinite;
+.hero-name-last {
+  margin-left: 0.3em;
 }
 
-/* Typing animation */
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; } /* Expands to show the full name */
+/* First pair: Smaller Z and A that form "Zainab Ahmed" text */
+.hero-decorative-z,
+.hero-decorative-a {
+  font-family: "Ballet", cursive;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  display: inline-block;
+  color: #5A5F58;
+  vertical-align: middle;
+  -webkit-text-stroke: 0.5px rgba(90, 95, 88, 0.3);
+  paint-order: stroke fill;
+  opacity: 0.95;
 }
 
-/* Blinking cursor animation */
-@keyframes blink-cursor {
-    50% { border-color: transparent; } /* Blinks by making the border invisible */
+.hero-decorative-z {
+  font-size: 180px;
+  margin-right: -0.25em;
+  transform: translateY(-30px);
 }
 
-.moon {
-    position: absolute;
-    width: 97px;
-    height: 97px;
-    right: 190px;
-    top: 22%;
+.hero-decorative-a {
+  font-size: 180px;
+  margin-left: 0.2em;
+  margin-right: -0.2em;
 }
 
-.moon .circle {
-    width: 97px;
-    height: 97px;
-    top: 0;
-    left: 0;
-    background-color: #e1dddd;
-    border-radius: 50px;
-    box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.5); /* Glow effect */
+/* Second pair: Large background decorative Z and A */
+.hero-bg-decorative-z,
+.hero-bg-decorative-a {
+  font-family: "Ballet", cursive;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+  color: #D0AEAE;
+  width: 280px;
+  height: 517px;
+  font-size: 410px;
+  -webkit-text-stroke: 0.8px rgba(208, 174, 174, 0.3);
+  paint-order: stroke fill;
+  opacity: 0.15;
 }
 
-.subtitle {
-    position: relative;
-    width: 100%;
-    top: 50px; 
-    left: 0;
-    margin-left: 0px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 200;
-    color: #9f86c0;
-    font-size: 17px;
-    letter-spacing: 1px; 
-    line-height: normal;
-    text-align: left;
-    text-transform: uppercase; 
+.hero-bg-decorative-z {
+  left: -50px;
+  top: -250px;
 }
 
-/* Scroll Down Icon */
-
-.scroll-down {
-    width: 70px;
-    height: 70px;
-    position: absolute; 
-    bottom: 20px; /* Distance from the bottom of the screen */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.hero-bg-decorative-a {
+  right: 200px;
+  bottom: -60px;
 }
 
-.scroll-down .arrows {
-    width: 100%;
-    height: auto;
-    opacity: 0.3; /* Slight transparency for a subtle effect */
+/* ===== About ===== */
+
+.about {
+  background-color: #F1EAE7;
+  position: relative;
+  overflow: visible;
 }
 
-/* About Me section */
-
-.about-me-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 20px;
-    text-align: center;
+.about-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
 }
 
-.about-title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    color: #ffff;
-    font-size: 32px;
-    margin-bottom: 60px;
+.about-text {
+  margin-left: 3.5rem; /* Ensures gap from teapot */
+  background-color: #F1EAE7;
+  padding: 1rem;
+  border-radius: 1rem;
+  position: relative;
+  z-index: 2; /* Above the teapot (z-index: 1) */
 }
+
+.about-text p {
+  margin: 0 0 1rem;
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #5a4c53;
+}
+
+.about-illustration {
+  display: flex;
+  justify-content: center;
+}
+
 
 .about-image {
-    width: 250px;
-    height: 250px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    border-radius: 50%;
+  width: 430px;
+  max-width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 1.8rem;
+  object-fit: cover;
 }
 
-.profile-pic {
+.about-teapot {
+  position: absolute;
+  left: -70px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 500px;
+  max-width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+.about-heart {
+  position: absolute;
+  left: 250px; /* To the right of the teapot (400px - 70px) */
+  top: 14%; /* Higher than the teapot */
+  width: 130px;
+  max-width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+/* Camera doodle positioned to the right, slightly off-screen and tilted */
+.about-camera {
+  position: absolute;
+  right: -60px; /* slightly off screen */
+  top: 55%;
+  transform: translateY(-50%) rotate(-10deg);
+  width: 160px; /* not too big */
+  max-width: 22%;
+  height: auto;
+  z-index: 1;
+}
+
+/* ===== Projects ===== */
+
+.projects {
+  background-color: #f5f1f2;
+}
+
+.project-filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  border-radius: 999px;
+  border: 1px solid #c0c9c4;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  background-color: #f8fbf7;
+  color: #758277;
+}
+
+.pill-active {
+  background-color: #7f9a89;
+  color: #fdfdfd;
+  border-color: #7f9a89;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+.project-card {
+  border-radius: 1.4rem;
+  background-color: #fbf7f6;
+  border: 1px solid rgba(211, 198, 196, 0.7);
+  box-shadow: 0 10px 35px rgba(190, 166, 156, 0.12);
+  overflow: hidden;
+}
+
+.project-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-image {
+  background-color: #e5d7d6;
+}
+
+.project-image-placeholder {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #866d68;
+  font-size: 0.85rem;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(222, 199, 195, 0.8));
+}
+
+.project-content {
+  padding: 1.1rem 1.4rem 1.2rem;
+}
+
+.project-tagline {
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a48e86;
+}
+
+.project-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4d454b;
+}
+
+.project-summary {
+  margin: 0 0 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #6b5d61;
+}
+
+.project-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid #b9a7a2;
+  background-color: #f4e6e2;
+  font-size: 0.8rem;
+  color: #6b5653;
+}
+
+/* ===== Experience ===== */
+
+.experience {
+  background-color: #f3ebe5;
+}
+
+.experience-panel {
+  border-radius: 2rem;
+  padding: 2.1rem 1.7rem;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(248, 242, 238, 0.95),
+      rgba(248, 242, 238, 0.96)
+    ),
+    url("https://via.placeholder.com/1200x600");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 18px 50px rgba(156, 136, 120, 0.25);
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.3rem 1.8rem;
+}
+
+.experience-card {
+  background-color: rgba(255, 255, 255, 0.92);
+  border-radius: 1.2rem;
+  padding: 0.8rem 1rem 0.95rem;
+  border: 1px solid rgba(211, 195, 184, 0.7);
+}
+
+.experience-label {
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7a6c64;
+}
+
+.experience-place {
+  margin: 0 0 0.15rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #4d3f38;
+}
+
+.experience-time {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  color: #8d8077;
+}
+
+.experience-copy {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #6a5b53;
+}
+
+/* ===== Footer ===== */
+
+.site-footer {
+  background-color: #f5dedc;
+  padding: 2.5rem 0 2.75rem;
+}
+
+.footer-inner {
+  text-align: center;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.footer-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #7a5f5c;
+  font-size: 0.9rem;
+  border: 1px solid rgba(210, 175, 171, 0.7);
+}
+
+.footer-email {
+  margin: 0 0 0.3rem;
+  font-size: 0.9rem;
+  color: #7c6562;
+}
+
+.footer-credit {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #947371;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 1100px) {
+  .about-text {
+    margin-left: 2.5rem;
+  }
+
+  .about-teapot {
+    width: 300px;
+    left: -75px;
+  }
+
+  .about-heart {
+    left: 225px; /* Adjusted for smaller teapot */
+    width: 120px;
+  }
+
+  .about-camera {
+    right: -45px;
+    width: 130px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    transform: scale(1.4); 
-}
+    height: auto;
+    min-height: 600px;
+    padding: 4rem 1.5rem;
+  }
 
-.about-description {
-    margin-top: 50px;
-    align-items: center;
-    max-width: 700px;
-    font-family: "Poppins", sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
-    color: #E0B1CB;
+  .hero-greeting {
+    width: 100%;
+    max-width: 602px;
+    height: auto;
+    font-size: 36px;
+    letter-spacing: -0.72px;
+  }
+
+  .hero-name-first,
+  .hero-name-last {
+    width: auto;
+    height: auto;
+    font-size: 96px;
+    letter-spacing: -4.8px;
+  }
+
+  .hero-decorative-z,
+  .hero-decorative-a {
+    font-size: 96px;
+  }
+
+  .hero-bg-decorative-z,
+  .hero-bg-decorative-a {
+    width: 206px;
+    height: 380px;
+    font-size: 310px;
+  }
+
+  .nav {
+    margin-right: -5rem;
+  }
+
+  .about-inner {
+    grid-template-columns: minmax(0, 1fr);
     text-align: center;
-    width: 2000px;
+  }
+
+  .about-text {
+    margin-left: 2rem;
+  }
+
+  .about-illustration {
+    order: -1;
+  }
+
+  .about-teapot {
+    width: 180px;
+    left: -100px;
+  }
+
+  .about-heart {
+    left: 80px; /* Adjusted for smaller teapot */
+    width: 90px;
+    top: 25%;
+  }
+
+  .about-camera {
+    right: -40px;
+    width: 110px;
+    transform: translateY(-50%) rotate(-8deg);
+  }
+
+  .project-grid,
+  .experience-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .experience-panel {
+    padding: 1.7rem 1.2rem;
+  }
 }
 
-/* Contact section */
-
-.contact-section {
-    margin-top: 80px;
-    display: flex;
+@media (max-width: 640px) {
+  .header-inner {
     flex-direction: column;
-    align-items: center;
-    padding: 1px 10px;
+    gap: 0.6rem;
+  }
+
+  .nav {
+    gap: 1.1rem;
+    margin-right: 0;
+  }
+
+  .hero {
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+    padding: 3rem 1rem;
+  }
+
+  .hero-greeting {
+    width: 100%;
+    max-width: 602px;
+    height: auto;
+    font-size: 28px;
+    letter-spacing: -0.56px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name-first,
+  .hero-name-last {
+    width: auto;
+    height: auto;
+    font-size: 64px;
+    letter-spacing: -3.2px;
+  }
+
+  .hero-decorative-z,
+  .hero-decorative-a {
+    font-size: 64px;
+  }
+
+  .hero-bg-decorative-z,
+  .hero-bg-decorative-a {
+    width: 138px;
+    height: 255px;
+    font-size: 207px;
+  }
+
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .about-text {
+    margin-left: 1.5rem;
+  }
+
+  .about-teapot {
+    width: 140px;
+    left: -90px;
+  }
+
+  .about-heart {
+    left: 50px; /* Adjusted for smaller teapot */
+    width: 70px;
+    top: 20%;
+  }
+
+  .about-camera {
+    right: -30px;
+    width: 90px;
+  }
 }
 
-.social-icons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
+@media (max-width: 480px) {
+  .about-teapot {
+    display: none;
+  }
 
-.contact-section .github {
-    width: 64px;
-    height: 65px;
-    cursor: pointer;
-    transition: tranform 0.2s;
-}
-
-.github:hover {
-    transform: scale(1.1);
-}
-
-.contact-section .linkedin {
-    width: 64px;
-    height: 64px;
-    cursor: pointer;
-    transition: tranform 0.2s;
-}
-
-.linkedin:hover {
-    transform: scale(1.1);
-}
-
-.contact-section .email {
-    font-family: "Poppins", serif;
-    font-weight: 600;
-    color: #5e548e;
-    font-size: 17px;
-    text-align: center;
-    margin-bottom: 3px;
-}
-
-.credits .built-by {
-    margin-top: 0px;
-    margin-bottom: 30px;
-    font-family: "Poppins", serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #5e548e;
-    font-size: 15px;
-    text-align: center;
+  .about-heart {
+    display: none;
+  }
+  .about-camera {
+    display: none;
+  }
 }
