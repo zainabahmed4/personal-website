@@ -309,13 +309,24 @@ img {
 /* Camera doodle positioned to the right, slightly off-screen and tilted */
 .about-camera {
   position: absolute;
-  right: -60px; /* slightly off screen */
-  top: 55%;
+  right: -70px; /* slightly off screen */
+  top: 45%;
   transform: translateY(-50%) rotate(-10deg);
-  width: 160px; /* not too big */
-  max-width: 22%;
+  width: 320px; /* not too big */
+  max-width: 20%;
   height: auto;
   z-index: 1;
+}
+
+.about-star {
+  position: absolute;
+  right: 250px; /* left of the camera which is more off-screen */
+  top: 65%; 
+  transform: translateY(-50%) rotate(6deg);
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  z-index: 2; /* sit above the camera */
 }
 
 /* ===== Projects ===== */
@@ -546,6 +557,12 @@ img {
     right: -45px;
     width: 130px;
   }
+
+  .about-star {
+    right: -10px;
+    top: 68%;
+    width: 120px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -616,6 +633,13 @@ img {
     right: -40px;
     width: 110px;
     transform: translateY(-50%) rotate(-8deg);
+  }
+
+  .about-star {
+    right: -20px;
+    top: 72%;
+    width: 110px;
+    transform: translateY(-50%) rotate(6deg);
   }
 
   .project-grid,
@@ -698,6 +722,12 @@ img {
     right: -30px;
     width: 90px;
   }
+
+  .about-star {
+    right: -10px;
+    width: 90px;
+    top: 75%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -709,6 +739,9 @@ img {
     display: none;
   }
   .about-camera {
+    display: none;
+  }
+  .about-star {
     display: none;
   }
 }
