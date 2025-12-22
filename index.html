@@ -15,6 +15,7 @@
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="img/apple-touch-icon.png" />
+  <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -79,10 +80,10 @@
       <div class="container">
         <h2 class="section-title center">Projects</h2>
 
-        <div class="project-filters" aria-hidden="true">
-          <button class="pill pill-active" type="button">All Projects</button>
-          <button class="pill" type="button">UX Research &amp; Design</button>
-          <button class="pill" type="button">Development</button>
+        <div class="project-filters items list" aria-hidden="true">
+          <span class="pill item-link menu-active" data-name="all">All Projects</span>
+          <span class="pill item-link" data-name="ux">UX Research &amp; Design</span>
+          <span class="pill item-link" data-name="dev">Development</span>
         </div>
 
         <div class="project-grid">
@@ -90,8 +91,10 @@
           <article class="project-card">
             <a href="project-student-onboarding.html" class="project-link">
               <div class="project-image">
-                <div class="project-image-placeholder">
-                  <span>Project image</span>
+                <div class="project-img" data-name="ux">
+                  <div class="project-image-placeholder">
+                    <span>Project image</span>
+                  </div>
                 </div>
               </div>
               <div class="project-content">
@@ -109,8 +112,10 @@
           <article class="project-card">
             <a href="project-hobby-blog.html" class="project-link">
               <div class="project-image">
-                <div class="project-image-placeholder">
-                  <span>Project image</span>
+                <div class="project-img" data-name="dev">
+                  <div class="project-image-placeholder">
+                    <span>Project image</span>
+                  </div>
                 </div>
               </div>
               <div class="project-content">
@@ -128,8 +133,10 @@
           <article class="project-card">
             <a href="project-pocket-gallery.html" class="project-link">
               <div class="project-image">
-                <div class="project-image-placeholder">
-                  <span>Project image</span>
+                <div class="project-img" data-name="ux">
+                  <div class="project-image-placeholder">
+                    <span>Project image</span>
+                  </div>
                 </div>
               </div>
               <div class="project-content">
@@ -147,8 +154,10 @@
           <article class="project-card">
             <a href="project-wics-website.html" class="project-link">
               <div class="project-image">
-                <div class="project-image-placeholder">
-                  <span>Project image</span>
+                <div class="project-img" data-name="ux">
+                  <div class="project-image-placeholder">
+                    <span>Project image</span>
+                  </div>
                 </div>
               </div>
               <div class="project-content">
