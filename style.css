@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+/* Fixed header offset */
+:root {
+  --header-offset: 55px;
+}
+
 body {
   margin: 0;
   /* Avenir is not a web font, so we fall back to a similar system stack */
@@ -13,6 +18,7 @@ body {
     sans-serif;
   color: #46363e;
   background-color: #f7f1f2;
+  padding-top: var(--header-offset); /* offset for fixed header */
 }
 
 /* Prevent horizontal scrolling when decorative images are positioned partially off-screen */
@@ -56,11 +62,14 @@ img {
 /* ===== Header / Nav ===== */
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 20;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   background-color: #E3E7E2;
   border-bottom: 1px solid rgba(180, 191, 183, 0.4);
+  backdrop-filter: blur(6px);
 }
 
 .header-inner {
@@ -252,23 +261,27 @@ img {
 .about {
   background-color: #F1EAE7;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .about-inner {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 3rem;
+  gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  position: relative;
 }
 
 .about-text {
-  margin-left: 3.5rem; /* Ensures gap from teapot */
+  margin-left: clamp(1rem, 3vw, 2.5rem);
   background-color: #F1EAE7;
-  padding: 1rem;
+  padding: 0.1rem;
   border-radius: 1rem;
   position: relative;
   z-index: 2; /* Above the teapot (z-index: 1) */
+  max-width: 560px;
 }
 
 .about-text p {
@@ -281,65 +294,63 @@ img {
 .about-illustration {
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: 2;
 }
 
 
 .about-image {
-  width: 300px;
-  max-width: 100%;
+  width: clamp(260px, 28vw, 360px);
   aspect-ratio: 4 / 5;
   border-radius: 1.8rem;
   object-fit: cover;
 }
 
-.about-teapot {
+.about-teapot,
+.about-heart,
+.about-camera,
+.about-star {
   position: absolute;
-  left: -70px;
-  top: 50%;
+  pointer-events: none;
+}
+
+.about-teapot {
+  left: -60px;
+  top: 80%;
   transform: translateY(-50%);
-  width: 400px;
-  max-width: 100%;
-  height: auto;
+  width: 380px;
   z-index: 1;
 }
 
 .about-heart {
-  position: absolute;
-  left: 250px; 
+  left: 120px; 
   top: 14%; /* Higher than the teapot */
-  width: 130px;
-  max-width: 100%;
-  height: auto;
+  width: 110px;
   z-index: 1;
+  opacity: 0.7;
 }
 
 /* Camera doodle positioned to the right, slightly off-screen and tilted */
 .about-camera {
-  position: absolute;
-  right: -70px; /* slightly off screen */
-  top: 45%;
-  transform: translateY(-50%) rotate(-10deg);
-  width: 200px; 
-  max-width: 20%;
-  height: auto;
+  right: -50px; /* slightly off screen */
+  top: 36%;
+  transform: translateY(-50%) rotate(-8deg);
+  width: 240px; 
   z-index: 1;
 }
 
 .about-star {
-  position: absolute;
-  right: 100px; /* left of the camera which is more off-screen */
-  top: 65%; 
+  right: 110px; /* left of the camera which is more off-screen */
+  top: 68%; 
   transform: translateY(-50%) rotate(6deg);
-  width: 100px;
-  max-width: 100%;
-  height: auto;
+  width: 120px;
   z-index: 2; /* sit above the camera */
 }
 
 /* ===== Projects ===== */
 
 .projects {
-  background-color: #f5f1f2;
+  background-color: #F7F4F1;
 }
 
 .project-filters {
@@ -405,10 +416,25 @@ img {
 
 .project-image {
   background-color: #e5d7d6;
+  height: clamp(200px, 24vw, 240px);
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.project-img,
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  position: absolute;
+  inset: 0;
 }
 
 .project-image-placeholder {
-  height: 180px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -431,8 +457,8 @@ img {
 
 .project-title {
   margin: 0 0 0.35rem;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 500;
   color: #4d454b;
 }
 
@@ -562,29 +588,41 @@ img {
 /* ===== Responsive ===== */
 
 @media (max-width: 1100px) {
+  .about-inner {
+    gap: clamp(1.75rem, 4vw, 3rem);
+  }
+
   .about-text {
-    margin-left: 2.5rem;
+    margin-left: clamp(0.75rem, 2.5vw, 2rem);
+  }
+
+  .about-image {
+    width: clamp(240px, 32vw, 320px);
   }
 
   .about-teapot {
-    width: 300px;
-    left: -75px;
+    width: 320px;
+    left: -140px;
+    top: 62%;
   }
 
   .about-heart {
-    left: 225px; /* Adjusted for smaller teapot */
-    width: 120px;
+    left: 80px; /* Adjusted for smaller teapot */
+    width: 95px;
+    top: 14%;
+    opacity: 0.6;
   }
 
   .about-camera {
-    right: -45px;
-    width: 130px;
+    right: -90px;
+    width: 210px;
+    top: 34%;
   }
 
   .about-star {
-    right: -10px;
-    top: 68%;
-    width: 120px;
+    right: 80px;
+    top: 70%;
+    width: 110px;
   }
 }
 
@@ -631,38 +669,46 @@ img {
   .about-inner {
     grid-template-columns: minmax(0, 1fr);
     text-align: center;
+    gap: 2.5rem;
+    padding: 3.5rem 0;
   }
 
   .about-text {
-    margin-left: 2rem;
+    margin: 0 auto;
   }
 
   .about-illustration {
     order: -1;
   }
 
+  .about-image {
+    width: clamp(240px, 50vw, 320px);
+  }
+
   .about-teapot {
-    width: 180px;
-    left: -100px;
+    width: 240px;
+    left: -140px;
+    top: 74%;
   }
 
   .about-heart {
-    left: 80px; /* Adjusted for smaller teapot */
+    left: 20px; /* Adjusted for smaller teapot */
     width: 90px;
-    top: 25%;
+    top: 16%;
   }
 
   .about-camera {
-    right: -40px;
-    width: 110px;
-    transform: translateY(-50%) rotate(-8deg);
+    right: -80px;
+    width: 190px;
+    top: 26%;
+    transform: translateY(-50%) rotate(-6deg);
   }
 
   .about-star {
-    right: -20px;
-    top: 72%;
-    width: 110px;
-    transform: translateY(-50%) rotate(6deg);
+    right: 60px;
+    top: 82%;
+    width: 90px;
+    transform: translateY(-50%) rotate(5deg);
   }
 
   .project-grid,
@@ -676,6 +722,10 @@ img {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --header-offset: 76px;
+  }
+
   .header-inner {
     flex-direction: column;
     gap: 0.6rem;
@@ -726,30 +776,41 @@ img {
     padding: 3.5rem 0;
   }
 
+  .about-inner {
+    gap: 2rem;
+    padding: 3rem 0;
+  }
+
   .about-text {
-    margin-left: 1.5rem;
+    margin: 0 auto;
+  }
+
+  .about-image {
+    width: clamp(220px, 60vw, 300px);
   }
 
   .about-teapot {
-    width: 140px;
-    left: -90px;
+    width: 170px;
+    left: -100px;
+    top: 78%;
   }
 
   .about-heart {
-    left: 50px; /* Adjusted for smaller teapot */
+    left: -10px; /* Adjusted for smaller teapot */
     width: 70px;
-    top: 20%;
+    top: 18%;
   }
 
   .about-camera {
-    right: -30px;
-    width: 90px;
+    right: -50px;
+    width: 130px;
+    top: 26%;
   }
 
   .about-star {
-    right: -10px;
-    width: 90px;
-    top: 75%;
+    right: 20px;
+    width: 80px;
+    top: 84%;
   }
 }
 
