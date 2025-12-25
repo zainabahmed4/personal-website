@@ -407,6 +407,10 @@ img {
   overflow: hidden;
 }
 
+.project-card:hover {
+    transform: scale(1.02);
+}
+
 .project-link {
   display: flex;
   flex-direction: column;
@@ -587,6 +591,10 @@ img {
   width: 50px;
   height: 50px;
   display: block;
+}
+
+.footer-icon:hover {
+    transform: scale(1.1);
 }
 
 .footer-email {
@@ -843,5 +851,309 @@ img {
   }
   .about-star {
     display: none;
+  }
+}
+
+/* ===== Project Page ===== */
+
+.project-page {
+  padding-top: 80px;
+  background-color: #F7F4F1;
+}
+
+.back-link {
+  color: #5f7268;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.project-header {
+  padding: 3rem 0 2rem;
+  text-align: center;
+}
+
+.project-label {
+  font-family: "Source Serif 4", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 2rem;
+  color: #8d8077;
+  margin: 0 0 1rem;
+  text-transform: none;
+}
+
+.project-page .project-header .project-title {
+  font-size: 3.5rem;
+  font-weight: 500;
+  color: #46363e;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.project-tags {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.project-tag {
+  background-color: #F7F4F1;
+  border: 1px solid #c0c9c4;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  color: #758277;
+}
+
+.project-mockup {
+  padding: 2rem 0 4rem;
+  text-align: center;
+}
+
+.laptop-container {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.laptop-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background-color: #F7F4F1;
+}
+
+.project-section {
+  padding: 3rem 0;
+}
+
+.project-section .container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.section-heading {
+  font-family: "Source Serif 4", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: #8d8077;
+  margin: 0 0 1.5rem;
+}
+
+.section-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #46363e;
+  margin: 0 0 1.5rem;
+}
+
+.research-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 800px;
+}
+
+.research-list li {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #46363e;
+  margin: 0 0 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.research-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #46363e;
+  font-size: 1.2rem;
+}
+
+.persona-section {
+  background-color: #f7f1f2;
+  padding: 4rem 0;
+}
+
+.persona-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.persona-painpoints-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.persona-card {
+  background-color: #ffffff;
+  border-radius: 1.2rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.persona-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5d7d6;
+}
+
+.persona-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.persona-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #46363e;
+  margin: 0 0 0.3rem;
+}
+
+.persona-role {
+  font-size: 0.9rem;
+  color: #8d8077;
+  margin: 0;
+}
+
+.persona-content h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #46363e;
+  margin: 1.2rem 0 0.5rem;
+}
+
+.persona-content p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #6a5b53;
+  margin: 0 0 1rem;
+}
+
+.painpoints-section {
+  background-color: #ffffff;
+  border-radius: 1.2rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.painpoints-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #46363e;
+  margin: 0 0 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.painpoints-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.painpoint-item {
+  text-align: center;
+}
+
+.painpoint-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 0.8rem;
+  display: block;
+}
+
+.painpoint-item p {
+  font-size: 0.85rem;
+  color: #6a5b53;
+  margin: 0;
+}
+
+.process-content {
+  margin-bottom: 2rem;
+}
+
+.process-visuals {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.process-image {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.outcome-mockups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.outcome-image {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-link-text {
+  font-size: 0.9rem;
+  color: #6a5b53;
+  margin: 2rem 0 0;
+}
+
+.project-link-text .project-link {
+  color: #7a5f5c;
+  text-decoration: underline;
+}
+
+.project-link-text .project-link:hover {
+  color: #5a4c53;
+}
+
+@media (max-width: 900px) {
+  .persona-painpoints-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .painpoints-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .outcome-mockups {
+    grid-template-columns: 1fr;
+  }
+
+  .project-page .project-header .project-title {
+    font-size: 2.5rem;
   }
 }
