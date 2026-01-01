@@ -1175,3 +1175,37 @@ img {
     font-size: 2.5rem;
   }
 }
+
+/* ===== Construction Page ===== */
+
+.construction-page {
+  background-color: #d3c0bc;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(214, 185, 181, 0.8));
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+}
+
+.construction-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.construction-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #46363e;
+  margin: 0;
+}
+
+.construction-link {
+  color: #7a5f5c;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.construction-link:hover {
+  color: #5a4c53;
+}
