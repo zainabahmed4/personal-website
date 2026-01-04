@@ -154,7 +154,7 @@ img {
   position: relative;
   overflow: visible;
   width: 100%;
-  margin-top: -60px;
+  margin-top: -80px;
 }
 
 .hero-greeting {
@@ -258,7 +258,7 @@ img {
 }
 
 .text-changer {
-  height: 40px;
+  height: 53px;
   padding: 10px;
   border-radius: 8px;
   display: flex;
@@ -266,8 +266,13 @@ img {
   font-family: "Avenir", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
   font-size: 25px;
   text-align: center;
+  margin-top: -1rem;
+  min-height: 50px;
+  justify-content: center;
 }
 
 .roles-container {
@@ -278,33 +283,37 @@ img {
 .role {
   display: block;
   height: 100%;
-  animation: role-change 4s infinite;
+  animation: role-change 7s infinite;
 }
 
 @keyframes role-change {
-  10% {
-    transform: translateY(-102%);
+  0%,
+  2% {
+    transform: translateY(0);
   }
-  25% {
+  12%,
+  20% {
     transform: translateY(-100%);
   }
-  35% {
-    transform: translateY(-202%);
-  }
-  50% {
+  28%,
+  36% {
     transform: translateY(-200%);
   }
-  60% {
-    transform: translateY(-302%);
-  }
-  75% {
+  44%,
+  52% {
     transform: translateY(-300%);
   }
-  85% {
-    transform: translateY(-402%);
-  }
-  100% {
+  60%,
+  68% {
     transform: translateY(-400%);
+  }
+  76%,
+  84% {
+    transform: translateY(-500%);
+  }
+  92%,
+  100% {
+    transform: translateY(-600%);
   }
 }
 
