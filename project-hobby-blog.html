@@ -12,6 +12,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Ballet:wght@400&family=Kaisei+Decol:wght@400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap"
     rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap"
+    rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="img/apple-touch-icon.png" />
@@ -33,16 +36,180 @@
     </div>
   </header>
 
-  <main class="project-page construction-page">
-    <div class="construction-content">
-      <p class="construction-text">
-        This project's page is under construction. In the meantime, visit this project's repo: 
-        <a href="https://github.com/zainabahmed4/hobby-diaries" target="_blank" rel="noreferrer" class="construction-link">GitHub Repository,</a>
-        or visit the Hobby Blog site directly at:
-        <a href="https://hobby-diaries.netlify.app/" target="_blank" rel="noreferrer" class="construction-link">Hobby Blog Site</a>
-      </p>
-    </div>
+  <main class="project-page">
+    <!-- Project Header -->
+    <section class="project-header">
+      <div class="container">
+        <p class="project-label">Projects</p>
+        <h1 class="project-title">Hobby Blog Website</h1>
+        <div class="project-tags">
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">HTML</span>
+          <span class="project-tag">CSS</span>
+          <span class="project-tag">Node.js</span>
+          <span class="project-tag">Express</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Laptop Mockup with Video -->
+    <section class="project-mockup">
+      <div class="container">
+        <div class="laptop-container">
+          <video class="laptop-video" autoplay loop muted playsinline>
+            <source src="img/hobby blog video.mov" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Description -->
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading">Description</h2>
+        <p class="section-text">
+          This project is a full-stack blog site with filtering and post creation functionality. Built with Express and EJS on the back end, and styled using custom CSS. Posts are saved locally in the browser using localStorage, allowing users to view their entries during a single session.
+        </p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading">Features</h2>
+        <ul class="research-list">
+          <li>A responsive grid layout with tag-based filtering</li>
+          <li>A modal interface for creating posts</li>
+          <li>“Read more” functionality with detailed post view</li>
+          <li>Local session-based storage for simplicity</li>
+          <li>Ability to create posts and set tags</li>
+          <li>Matching hand-drawn illustrations to each hobby tag automatically</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Code Block -->
+    <section class="project-section code-snippet-section">
+      <div class="container">
+        <div class="process-content">
+          <p class="section-text">
+            Handles user form submissions, builds a new blog post object, saves it to localStorage, and updates the DOM in real time:
+          </p>
+        </div>
+      <div class="container">
+        <div class="code-snippet-card">
+          <pre class="code-snippet"><code>createPostForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const newPost = {
+    title: document.getElementById('postTitle').value,
+    author: document.getElementById('postAuthor').value,
+    content: document.getElementById('postContent').value,
+    tag: document.getElementById('postTag').value,
+    date: new Date().toLocaleDateString(),
+    image: tagImages[document.getElementById('postTag').value]
+  };
+
+  const userPosts = JSON.parse(localStorage.getItem('userPosts') || '[]');
+  userPosts.unshift(newPost);
+  localStorage.setItem('userPosts', JSON.stringify(userPosts));
+
+  addNewPostToPage(newPost);
+  modal.style.display = 'none';
+  createPostForm.reset();
+});</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Block -->
+    <section class="project-section code-snippet-section">
+      <div class="container">
+        <div class="process-content">
+          <p class="section-text">
+            Implements dynamic filtering of blog posts by category tag (e.g., ART, FOOD) through interactive tag buttons:
+          </p>
+        </div>
+      <div class="container">
+        <div class="code-snippet-card">
+          <pre class="code-snippet"><code>categoryTags.forEach(tag => {
+  tag.addEventListener('click', () => {
+    categoryTags.forEach(t => t.classList.remove('active'));
+    tag.classList.add('active');
+
+    const selectedTag = tag.dataset.tag;
+
+    document.querySelectorAll('.blog-post').forEach(post => {
+      if (selectedTag === 'ALL' || post.dataset.tag === selectedTag) {
+        post.style.display = 'flex';
+      } else {
+        post.style.display = 'none';
+      }
+    });
+  });
+});</code></pre>
+        </div>
+      </div>
+    </section>
+
+        <!-- Code Block -->
+    <section class="project-section code-snippet-section">
+      <div class="container">
+        <div class="process-content">
+          <p class="section-text">
+            Defines and serves hard-coded sample blog posts from the Express server using EJS templating:
+          </p>
+        </div>
+      <div class="container">
+        <div class="code-snippet-card">
+          <pre class="code-snippet"><code>const samplePosts = [
+  {
+    date: 'May 22, 2025',
+    tag: 'ART',
+    image: '/tag-images/Art_Tag.png',
+    title: 'Trying Out Oil Pastels',
+    author: 'Zainab Ahmed',
+    content: "I've been wanting to try out oil pastels..."
+  },
+  // other sample posts
+];
+
+app.get('/', (req, res) => {
+  res.render('index', { 
+    posts: samplePosts,
+    tagImages: tagImages 
+  });
+});</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcome -->
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading">Outcome</h2>
+        <p class="section-text">
+          A smooth, interactive frontend experience with full functionality for posting and browsing, perfect for testing full-stack skills.
+        </p>
+        <div class="outcome-mockups">
+          <img src="img/hobby blog 1.png" alt="Hobby Blog site screenshot 1" class="outcome-image" />
+          <img src="img/hobby blog 2.png" alt="Hobby Blog site screenshot 2" class="outcome-image" />
+          <img src="img/hobby blog 3.png" alt="Hobby Blog site screenshot 3" class="outcome-image" />
+          <img src="img/hobby blog 4.png" alt="Hobby Blog site screenshot 4" class="outcome-image" />
+
+        </div>
+        <p class="project-link-text">Visit the website here: <a href="https://hobby-diaries.netlify.app/" target="_blank" rel="noreferrer" class="project-link">Hobby Blog Site</a></p>
+        <p class="project-link-text">Visit this project's GitHub repository here: <a href="https://github.com/zainabahmed4/hobby-diaries" target="_blank" rel="noreferrer" class="project-link">GitHub Repository</a></p>
+      </div>
+    </section>
   </main>
+
+
+
+
+
+
 
   <!-- Footer -->
   <footer id="contact" class="site-footer">
@@ -65,5 +232,3 @@
 </body>
 
 </html>
-
-
