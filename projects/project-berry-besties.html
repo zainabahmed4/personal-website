@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="../" />
+  <title>Berry Besties Farm - Zainab Ahmed</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ballet:wght@400&family=Kaisei+Decol:wght@400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="img/apple-touch-icon.png" />
+</head>
+
+<body>
+  <!-- Top navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="index.html" class="back-link">← Back</a>
+      </div>
+      <nav class="nav">
+        <a href="index.html#about">about</a>
+        <a href="index.html#projects">projects</a>
+        <a href="index.html#experience">experience</a>
+        <a href="index.html#contact">contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="project-page">
+    <!-- Project Header -->
+    <section class="project-header">
+      <div class="container">
+        <p class="project-label">Projects</p>
+        <h1 class="project-title">Berry Besties Farm</h1>
+        <div class="project-tags">
+          <span class="project-tag">React</span>
+          <span class="project-tag">Supabase</span>
+          <span class="project-tag">React Router</span>
+          <span class="project-tag">CSS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Laptop Mockup with Video -->
+    <section class="project-mockup">
+      <div class="container">
+        <div class="laptop-container">
+          <video class="laptop-video" autoplay loop muted playsinline>
+            <source src="img/berry besties video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <img class="laptop-frame" src="img/laptop-frame.svg" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
+
+    <!-- The Description -->
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading">Description</h2>
+        <p class="section-text">
+          This project is a farm-themed React app where users create and manage a team of animal helpers. Each Bestie has a name, animal type, farm job, and favorite berry. Supabase stores the full crew so users can create, view, edit, and delete Besties, with a unique detail page for every character.
+        </p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading">Features</h2>
+        <ul class="research-list">
+          <li>Create form with animal cards, farm jobs, and favorite berry choices</li>
+          <li>Berry Barn gallery sorted by newest Besties first</li>
+          <li>Unique detail pages with join date and a short character story</li>
+          <li>Edit and delete flows connected to Supabase</li>
+          <li>Form validation and disabled submit until every field is filled</li>
+          <li>Loading, empty, not-found, and delete confirmation states</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Code Block -->
+    <section class="project-section code-snippet-section">
+      <div class="container">
+        <div class="process-content">
+          <p class="section-text">
+            Inserts a new Bestie into Supabase, then sends the user to the Berry Barn:
+          </p>
+        </div>
+      <div class="container">
+        <div class="code-snippet-card">
+          <pre class="code-snippet"><code>const handleSubmit = async (event) => {
+  event.preventDefault()
+
+  const newBestie = {
+    name: name.trim(),
+    animal,
+    job,
+    berry,
+  }
+
+  const { error } = await supabase
+    .from("besties")
+    .insert(newBestie)
+
+  if (error) {
+    alert("Something went wrong. Please try again.")
+    return
+  }
+
+  navigate("/barn")
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Block -->
+    <section class="project-section code-snippet-section">
+      <div class="container">
+        <div class="process-content">
+          <p class="section-text">
+            Loads the full crew from Supabase when the Berry Barn page opens:
+          </p>
+        </div>
+      <div class="container">
+        <div class="code-snippet-card">
+          <pre class="code-snippet"><code>useEffect(() => {
+  const fetchBesties = async () => {
+    const { data, error } = await supabase
+      .from("besties")
+      .select("*")
+      .order("created_at", { ascending: false })
+
+    if (error) {
+      alert("Something went wrong. Please try again.")
+      return
+    }
+
+    setBesties(data)
+  }
+
+  fetchBesties()
+}, [])</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Block -->
+    <section class="project-section code-snippet-section">
+      <div class="container">
+        <div class="process-content">
+          <p class="section-text">
+            Gives every Bestie its own create, gallery, detail, and edit routes:
+          </p>
+        </div>
+      <div class="container">
+        <div class="code-snippet-card">
+          <pre class="code-snippet"><code>&lt;Routes&gt;
+  &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+  &lt;Route path="/create" element={&lt;CreateBestie /&gt;} /&gt;
+  &lt;Route path="/barn" element={&lt;BestieBarn /&gt;} /&gt;
+  &lt;Route path="/bestie/:bestieId" element={&lt;BestieDetail /&gt;} /&gt;
+  &lt;Route path="/edit/:bestieId" element={&lt;EditDetails /&gt;} /&gt;
+&lt;/Routes&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcome -->
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading">Outcome</h2>
+        <p class="section-text">
+          A complete CRUD app with a playful farm theme and persistent data. This project helped me connect React forms and routes to a real database, including loading existing records into an edit form and handling empty or missing states.
+        </p>
+        <div class="outcome-mockups">
+          <img src="img/berry besties mockup.png" alt="Berry Besties Farm screenshot 1" class="outcome-image" />
+          <img src="img/berry besties 2.png" alt="Berry Besties Farm screenshot 2" class="outcome-image" />
+          <img src="img/berry besties 3.png" alt="Berry Besties Farm screenshot 3" class="outcome-image" />
+        </div>
+        <p class="project-link-text">Visit this project's GitHub repository here: <a href="https://github.com/zainabahmed4/berry-besties" target="_blank" rel="noreferrer" class="project-link">GitHub Repository</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact" class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-icons">
+        <a href="https://github.com/zainabahmed4" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <img src="img/github.svg" alt="GitHub" class="footer-icon" />
+        </a>
+        <a href="mailto:zainabahmed1204@gmail.com" aria-label="Email">
+          <img src="img/email.svg" alt="Email" class="footer-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/zainab-ahmed1204" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <img src="img/linkedin.svg" alt="LinkedIn" class="footer-icon" />
+        </a>
+      </div>
+      <p class="footer-email"></p>
+      <p class="footer-credit">Designed &amp; built by Zainab <3</p>
+    </div>
+  </footer>
+</body>
+
+</html>
