@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" fill="none">
+  <defs>
+    <mask id="screen-cutout">
+      <rect width="1200" height="760" fill="#fff" />
+      <rect x="135" y="55" width="930" height="525" rx="7" fill="#000" />
+    </mask>
+    <linearGradient id="base" x1="600" y1="610" x2="600" y2="710" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#55545A" />
+      <stop offset=".14" stop-color="#D9D9DD" />
+      <stop offset=".55" stop-color="#A9A9B0" />
+      <stop offset="1" stop-color="#73737A" />
+    </linearGradient>
+    <linearGradient id="keycap-surface" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#66656C" />
+      <stop offset="1" stop-color="#3E3D43" />
+    </linearGradient>
+    <rect id="keycap" width="34" height="7" rx="1.8" fill="url(#keycap-surface)" stroke="#48474E" stroke-width=".8" />
+    <rect id="function-key" width="22" height="4" rx="1.4" fill="url(#keycap-surface)" stroke="#48474E" stroke-width=".7" />
+    <filter id="shadow" x="55" y="8" width="1090" height="744" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="12" />
+    </filter>
+  </defs>
+  <path d="M120 620h960l89 76c8 7 3 20-8 20H39c-11 0-16-13-8-20l89-76Z" fill="#29282D" opacity=".2" filter="url(#shadow)" />
+  <rect x="105" y="25" width="990" height="595" rx="30" fill="#28272C" mask="url(#screen-cutout)" />
+  <circle cx="600" cy="39" r="5" fill="#77777D" />
+  <path d="M105 610h990l89 76c8 7 3 20-8 20H24c-11 0-16-13-8-20l89-76Z" fill="url(#base)" />
+  <path d="M520 620h160l17 13H503l17-13Z" fill="#85858B" opacity=".8" />
+  <path d="M230 635h740l40 42H190l40-42Z" fill="#B7B7BD" opacity=".42" />
+  <g aria-label="Keyboard" transform="translate(600 0) scale(1.3 1) translate(-600 0)">
+    <use href="#function-key" x="342" y="637" /><use href="#function-key" x="380" y="637" />
+    <use href="#function-key" x="418" y="637" /><use href="#function-key" x="456" y="637" />
+    <use href="#function-key" x="494" y="637" /><use href="#function-key" x="532" y="637" />
+    <use href="#function-key" x="570" y="637" /><use href="#function-key" x="608" y="637" />
+    <use href="#function-key" x="646" y="637" /><use href="#function-key" x="684" y="637" />
+    <use href="#function-key" x="722" y="637" /><use href="#function-key" x="760" y="637" />
+    <use href="#function-key" x="798" y="637" /><use href="#function-key" x="836" y="637" />
+
+    <use href="#keycap" x="322" y="643" /><use href="#keycap" x="362" y="643" />
+    <use href="#keycap" x="402" y="643" /><use href="#keycap" x="442" y="643" />
+    <use href="#keycap" x="482" y="643" /><use href="#keycap" x="522" y="643" />
+    <use href="#keycap" x="562" y="643" /><use href="#keycap" x="602" y="643" />
+    <use href="#keycap" x="642" y="643" /><use href="#keycap" x="682" y="643" />
+    <use href="#keycap" x="722" y="643" /><use href="#keycap" x="762" y="643" />
+    <use href="#keycap" x="802" y="643" /><use href="#keycap" x="842" y="643" />
+
+    <use href="#keycap" x="330" y="651" /><use href="#keycap" x="370" y="651" />
+    <use href="#keycap" x="410" y="651" /><use href="#keycap" x="450" y="651" />
+    <use href="#keycap" x="490" y="651" /><use href="#keycap" x="530" y="651" />
+    <use href="#keycap" x="570" y="651" /><use href="#keycap" x="610" y="651" />
+    <use href="#keycap" x="650" y="651" /><use href="#keycap" x="690" y="651" />
+    <use href="#keycap" x="730" y="651" /><use href="#keycap" x="770" y="651" />
+    <use href="#keycap" x="810" y="651" /><use href="#keycap" x="850" y="651" />
+
+    <use href="#keycap" x="348" y="659" /><use href="#keycap" x="390" y="659" />
+    <use href="#keycap" x="432" y="659" /><use href="#keycap" x="474" y="659" />
+    <use href="#keycap" x="516" y="659" /><use href="#keycap" x="558" y="659" />
+    <use href="#keycap" x="600" y="659" /><use href="#keycap" x="642" y="659" />
+    <use href="#keycap" x="684" y="659" /><use href="#keycap" x="726" y="659" />
+    <use href="#keycap" x="768" y="659" /><use href="#keycap" x="810" y="659" />
+
+    <rect x="351" y="667" width="48" height="7" rx="1.8" fill="url(#keycap-surface)" stroke="#48474E" stroke-width=".8" />
+    <rect x="405" y="667" width="42" height="7" rx="1.8" fill="url(#keycap-surface)" stroke="#48474E" stroke-width=".8" />
+    <rect x="453" y="667" width="42" height="7" rx="1.8" fill="url(#keycap-surface)" stroke="#48474E" stroke-width=".8" />
+    <rect x="501" y="667" width="198" height="7" rx="1.8" fill="url(#keycap-surface)" stroke="#48474E" stroke-width=".8" />
+    <rect x="705" y="667" width="42" height="7" rx="1.8" fill="url(#keycap-surface)" stroke="#48474E" stroke-width=".8" />
+    <rect x="753" y="667" width="42" height="7" rx="1.8" fill="url(#keycap-surface)" stroke="#48474E" stroke-width=".8" />
+    <rect x="801" y="667" width="48" height="7" rx="1.8" fill="url(#keycap-surface)" stroke="#48474E" stroke-width=".8" />
+  </g>
+  <path d="M492 680h216l6 20H486l6-20Z" fill="#77777E" opacity=".35" />
+  <path d="M500 681h200l5 17H495l5-17Z" fill="#C6C6CB" stroke="#77777E" stroke-opacity=".55" stroke-width="1.5" />
+  <path d="M24 706h1152c-4 8-11 12-21 12H45c-10 0-17-4-21-12Z" fill="#64646A" />
+</svg>

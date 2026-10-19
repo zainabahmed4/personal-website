@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hobby Blog Website - Zainab Ahmed</title>
+  <base href="../" />
+  <title>Fantasy Through Time - Zainab Ahmed</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -41,13 +42,12 @@
     <section class="project-header">
       <div class="container">
         <p class="project-label">Projects</p>
-        <h1 class="project-title">Hobby Blog Website</h1>
+        <h1 class="project-title">Fantasy Through Time</h1>
         <div class="project-tags">
-          <span class="project-tag">JavaScript</span>
-          <span class="project-tag">HTML</span>
-          <span class="project-tag">CSS</span>
-          <span class="project-tag">Node.js</span>
-          <span class="project-tag">Express</span>
+          <span class="project-tag">React</span>
+          <span class="project-tag">Recharts</span>
+          <span class="project-tag">React Router</span>
+          <span class="project-tag">REST APIs</span>
         </div>
       </div>
     </section>
@@ -57,9 +57,10 @@
       <div class="container">
         <div class="laptop-container">
           <video class="laptop-video" autoplay loop muted playsinline>
-            <source src="img/hobby blog video.mov" type="video/mp4">
+            <source src="img/fantasy books video.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
+          <img class="laptop-frame" src="img/laptop-frame.svg" alt="" aria-hidden="true" />
         </div>
       </div>
     </section>
@@ -69,7 +70,7 @@
       <div class="container">
         <h2 class="section-heading">Description</h2>
         <p class="section-text">
-          This project is a full-stack blog site with filtering and post creation functionality. Built with Express and EJS on the back end, and styled using custom CSS. Posts are saved locally in the browser using localStorage, allowing users to view their entries during a single session.
+          This project is an interactive React dashboard that explores fantasy literature through data from the Open Library API. Users can search and filter books, compare publication periods and popular authors through charts, and open a dedicated detail page for each title.
         </p>
       </div>
     </section>
@@ -79,12 +80,12 @@
       <div class="container">
         <h2 class="section-heading">Features</h2>
         <ul class="research-list">
-          <li>A responsive grid layout with tag-based filtering</li>
-          <li>A modal interface for creating posts</li>
-          <li>“Read more” functionality with detailed post view</li>
-          <li>Local session-based storage for simplicity</li>
-          <li>Ability to create posts and set tags</li>
-          <li>Matching hand-drawn illustrations to each hobby tag automatically</li>
+          <li>Search books by title or author and filter by publication period</li>
+          <li>Summary cards for total books, authors, oldest year, and average year</li>
+          <li>Bar charts for publication periods and top authors that update with filters</li>
+          <li>Unique detail routes for each book with extra fields like subjects and page count</li>
+          <li>Cover images with a fallback when no cover is available</li>
+          <li>Loading, error, no-results, and book-not-found states</li>
         </ul>
       </div>
     </section>
@@ -94,31 +95,28 @@
       <div class="container">
         <div class="process-content">
           <p class="section-text">
-            Handles user form submissions, builds a new blog post object, saves it to localStorage, and updates the DOM in real time:
+            Fetches fantasy books from Open Library and keeps only the fields the dashboard needs:
           </p>
         </div>
       <div class="container">
         <div class="code-snippet-card">
-          <pre class="code-snippet"><code>createPostForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+          <pre class="code-snippet"><code>const url =
+  'https://openlibrary.org/search.json?subject=fantasy&amp;limit=50&amp;fields=key,title,author_name,first_publish_year,edition_count,cover_i,subject,person,place,language,number_of_pages_median,ebook_access'
 
-  const newPost = {
-    title: document.getElementById('postTitle').value,
-    author: document.getElementById('postAuthor').value,
-    content: document.getElementById('postContent').value,
-    tag: document.getElementById('postTag').value,
-    date: new Date().toLocaleDateString(),
-    image: tagImages[document.getElementById('postTag').value]
-  };
+const response = await fetch(url)
+const result = await response.json()
 
-  const userPosts = JSON.parse(localStorage.getItem('userPosts') || '[]');
-  userPosts.unshift(newPost);
-  localStorage.setItem('userPosts', JSON.stringify(userPosts));
-
-  addNewPostToPage(newPost);
-  modal.style.display = 'none';
-  createPostForm.reset();
-});</code></pre>
+const cleanedBooks = result.docs
+  .filter((book) => book.title &amp;&amp; book.first_publish_year)
+  .map((book) => ({
+    id: book.key.replace('/works/', ''),
+    title: book.title,
+    author: book.author_name ? book.author_name[0] : 'Unknown author',
+    year: book.first_publish_year,
+    editions: book.edition_count || 0,
+    coverId: book.cover_i || null,
+  }))
+  .sort((a, b) => a.year - b.year)</code></pre>
         </div>
       </div>
     </section>
@@ -128,59 +126,42 @@
       <div class="container">
         <div class="process-content">
           <p class="section-text">
-            Implements dynamic filtering of blog posts by category tag (e.g., ART, FOOD) through interactive tag buttons:
+            Filters the list by search text and publication period, then recalculates the summary stats:
           </p>
         </div>
       <div class="container">
         <div class="code-snippet-card">
-          <pre class="code-snippet"><code>categoryTags.forEach(tag => {
-  tag.addEventListener('click', () => {
-    categoryTags.forEach(t => t.classList.remove('active'));
-    tag.classList.add('active');
+          <pre class="code-snippet"><code>const filteredBooks = data.filter((book) => {
+  const searchText = searchQuery.toLowerCase()
+  const titleMatches = book.title.toLowerCase().includes(searchText)
+  const authorMatches = book.author.toLowerCase().includes(searchText)
 
-    const selectedTag = tag.dataset.tag;
+  return (titleMatches || authorMatches) &amp;&amp; matchesPublicationPeriod(book)
+})
 
-    document.querySelectorAll('.blog-post').forEach(post => {
-      if (selectedTag === 'ALL' || post.dataset.tag === selectedTag) {
-        post.style.display = 'flex';
-      } else {
-        post.style.display = 'none';
-      }
-    });
-  });
-});</code></pre>
+const totalBooks = filteredBooks.length
+const totalAuthors = new Set(filteredBooks.map((book) => book.author)).size</code></pre>
         </div>
       </div>
     </section>
 
-        <!-- Code Block -->
+    <!-- Code Block -->
     <section class="project-section code-snippet-section">
       <div class="container">
         <div class="process-content">
           <p class="section-text">
-            Defines and serves hard-coded sample blog posts from the Express server using EJS templating:
+            Groups the current results into publication-period buckets for the first chart:
           </p>
         </div>
       <div class="container">
         <div class="code-snippet-card">
-          <pre class="code-snippet"><code>const samplePosts = [
-  {
-    date: 'May 22, 2025',
-    tag: 'ART',
-    image: '/tag-images/Art_Tag.png',
-    title: 'Trying Out Oil Pastels',
-    author: 'Zainab Ahmed',
-    content: "I've been wanting to try out oil pastels..."
-  },
-  // other sample posts
-];
-
-app.get('/', (req, res) => {
-  res.render('index', { 
-    posts: samplePosts,
-    tagImages: tagImages 
-  });
-});</code></pre>
+          <pre class="code-snippet"><code>const periodData = [
+  { period: 'Before 1900', books: data.filter((book) => book.year &lt; 1900).length },
+  { period: '1900–1949', books: data.filter((book) => book.year &gt;= 1900 &amp;&amp; book.year &lt;= 1949).length },
+  { period: '1950–1979', books: data.filter((book) => book.year &gt;= 1950 &amp;&amp; book.year &lt;= 1979).length },
+  { period: '1980–1999', books: data.filter((book) => book.year &gt;= 1980 &amp;&amp; book.year &lt;= 1999).length },
+  { period: '2000–Present', books: data.filter((book) => book.year &gt;= 2000).length },
+]</code></pre>
         </div>
       </div>
     </section>
@@ -190,26 +171,17 @@ app.get('/', (req, res) => {
       <div class="container">
         <h2 class="section-heading">Outcome</h2>
         <p class="section-text">
-          A smooth, interactive frontend experience with full functionality for posting and browsing, perfect for testing full-stack skills.
+          A dashboard that makes a book dataset easier to explore through search, charts, and detail pages. Sharing one fetch across the dashboard and every detail route kept loading and error states consistent without extra API calls.
         </p>
         <div class="outcome-mockups">
-          <img src="img/hobby blog 1.png" alt="Hobby Blog site screenshot 1" class="outcome-image" />
-          <img src="img/hobby blog 2.png" alt="Hobby Blog site screenshot 2" class="outcome-image" />
-          <img src="img/hobby blog 3.png" alt="Hobby Blog site screenshot 3" class="outcome-image" />
-          <img src="img/hobby blog 4.png" alt="Hobby Blog site screenshot 4" class="outcome-image" />
-
+          <img src="img/fantasy books mockup.png" alt="Fantasy Through Time screenshot 1" class="outcome-image" />
+          <img src="img/fantasy books 2.png" alt="Fantasy Through Time screenshot 2" class="outcome-image" />
+          <img src="img/fantasy books 3.png" alt="Fantasy Through Time screenshot 3" class="outcome-image" />
         </div>
-        <p class="project-link-text">Visit the website here: <a href="https://hobby-diaries.netlify.app/" target="_blank" rel="noreferrer" class="project-link">Hobby Blog Site</a></p>
-        <p class="project-link-text">Visit this project's GitHub repository here: <a href="https://github.com/zainabahmed4/hobby-diaries" target="_blank" rel="noreferrer" class="project-link">GitHub Repository</a></p>
+        <p class="project-link-text">Visit this project's GitHub repository here: <a href="https://github.com/zainabahmed4/book-data" target="_blank" rel="noreferrer" class="project-link">GitHub Repository</a></p>
       </div>
     </section>
   </main>
-
-
-
-
-
-
 
   <!-- Footer -->
   <footer id="contact" class="site-footer">

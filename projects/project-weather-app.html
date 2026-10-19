@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="../" />
+  <title>Weather App - Zainab Ahmed</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ballet:wght@400&family=Kaisei+Decol:wght@400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="img/apple-touch-icon.png" />
+</head>
+
+<body>
+  <!-- Top navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="index.html" class="back-link">← Back</a>
+      </div>
+      <nav class="nav">
+        <a href="index.html#about">about</a>
+        <a href="index.html#projects">projects</a>
+        <a href="index.html#experience">experience</a>
+        <a href="index.html#contact">contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="project-page">
+    <!-- Project Header -->
+    <section class="project-header">
+      <div class="container">
+        <p class="project-label">Projects</p>
+        <h1 class="project-title">Weather App</h1>
+        <div class="project-tags">
+          <span class="project-tag">Java</span>
+          <span class="project-tag">JavaFX</span>
+          <span class="project-tag">REST APIs</span>
+          <span class="project-tag">JSON</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Description -->
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading">Description</h2>
+        <p class="section-text">
+          This project is a JavaFX desktop weather app designed around a phone-sized 400×800 window. It pulls live forecast data from the National Weather Service API and active weather alerts for Illinois, then presents them across a current conditions page, a three-day forecast, an alerts list, and an interactive radar map.
+        </p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading">Features</h2>
+        <ul class="research-list">
+          <li>Current weather view with temperature, high/low, and short forecast</li>
+          <li>Animated GIF backgrounds that change with the weather condition</li>
+          <li>Hourly temperature curve plus wind, humidity, and precipitation details</li>
+          <li>Three-day forecast page built with a shared page template</li>
+          <li>Active Illinois alerts fetched from the NWS alerts API</li>
+          <li>Radar map screen rendered in a JavaFX WebView</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Code Block -->
+    <section class="project-section code-snippet-section">
+      <div class="container">
+        <div class="process-content">
+          <p class="section-text">
+            Loads forecast and alert data once at startup, then opens the home screen:
+          </p>
+        </div>
+      <div class="container">
+        <div class="code-snippet-card">
+          <pre class="code-snippet"><code>@Override
+public void start(Stage primaryStage) throws Exception {
+  this.mainStage = primaryStage;
+
+  Font.loadFont(getClass().getResource("/fonts/InterVariable.ttf").toExternalForm(), 12);
+
+  forecast = WeatherAPI.getForecast("LOT", 77, 70);
+  alerts = AlertsAPI.getActiveAlertsForIllinois();
+
+  showHomePage();
+  mainStage.setTitle("Weather App");
+  mainStage.show();
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Block -->
+    <section class="project-section code-snippet-section">
+      <div class="container">
+        <div class="process-content">
+          <p class="section-text">
+            Fetches a National Weather Service forecast for a grid point and maps the JSON response into Java objects:
+          </p>
+        </div>
+      <div class="container">
+        <div class="code-snippet-card">
+          <pre class="code-snippet"><code>public static ArrayList&lt;Period&gt; getForecast(String region, int gridx, int gridy) {
+  HttpRequest request = HttpRequest.newBuilder()
+      .uri(URI.create("https://api.weather.gov/gridpoints/" + region + "/"
+          + gridx + "," + gridy + "/forecast"))
+      .build();
+
+  HttpResponse&lt;String&gt; response = HttpClient.newHttpClient()
+      .send(request, HttpResponse.BodyHandlers.ofString());
+
+  Root r = getObject(response.body());
+  return r.properties.periods;
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Block -->
+    <section class="project-section code-snippet-section">
+      <div class="container">
+        <div class="process-content">
+          <p class="section-text">
+            Updates the home screen with the current period, night temperature, and whether any alerts should be shown:
+          </p>
+        </div>
+      <div class="container">
+        <div class="code-snippet-card">
+          <pre class="code-snippet"><code>public void updateData(Period dayData, Period nightData, boolean hasAlerts) {
+  tempLabel.setText(dayData.temperature + "°");
+  descLabel.setText(dayData.shortForecast);
+
+  int high = dayData.temperature;
+  int low = (nightData != null) ? nightData.temperature : high - 10;
+  hiLoLabel.setText("H: " + high + "° L: " + low + "°");
+
+  alertButton.setVisible(hasAlerts);
+  alertButton.setManaged(hasAlerts);
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcome -->
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-heading">Outcome</h2>
+        <p class="section-text">
+          A complete JavaFX weather client with multiple screens, live API data, and a phone-style layout. The project was a chance to practice Java networking, JSON parsing, and building a multi-page desktop UI.
+        </p>
+        <p class="project-link-text">Visit this project's GitHub repository here: <a href="https://github.com/zainabahmed4/WeatherApp-Project2" target="_blank" rel="noreferrer" class="project-link">GitHub Repository</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact" class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-icons">
+        <a href="https://github.com/zainabahmed4" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <img src="img/github.svg" alt="GitHub" class="footer-icon" />
+        </a>
+        <a href="mailto:zainabahmed1204@gmail.com" aria-label="Email">
+          <img src="img/email.svg" alt="Email" class="footer-icon" />
+        </a>
+        <a href="https://www.linkedin.com/in/zainab-ahmed1204" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <img src="img/linkedin.svg" alt="LinkedIn" class="footer-icon" />
+        </a>
+      </div>
+      <p class="footer-email"></p>
+      <p class="footer-credit">Designed &amp; built by Zainab <3</p>
+    </div>
+  </footer>
+</body>
+
+</html>
